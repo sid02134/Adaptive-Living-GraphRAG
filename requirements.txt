@@ -1,0 +1,17 @@
+langchain
+langchain-community
+langchain-neo4j
+langchain-ollama
+neo4j
+chromadb
+sentence-transformers
+fastapi
+uvicorn
+streamlit
+pypdf
+spacy
+networkx
+pandas
+requests
+beautifulsoup4
+python-dotenv
