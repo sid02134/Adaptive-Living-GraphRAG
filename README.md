@@ -18,6 +18,9 @@ This project combines GraphRAG, Neo4j, ChromaDB, and Llama 3 to build an intelli
 
 ## Team
 - Siddhant Ukarde
+- Riya Thopate
+- Bhavesh Uchade
+- Vansh Zalpuri
 
 ## Status
 🚀 Development Started
