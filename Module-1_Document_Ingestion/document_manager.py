@@ -4,9 +4,15 @@ File : document_manager.py
 Purpose : Complete document processing pipeline.
 """
 
-from pdf_loader import PDFLoader
-from text_cleaner import TextCleaner
-from chunker import TextChunker
+try:
+    from .pdf_loader import PDFLoader
+    from .text_cleaner import TextCleaner
+    from .chunker import TextChunker
+except (ImportError, ValueError):
+    from pdf_loader import PDFLoader
+    from text_cleaner import TextCleaner
+    from chunker import TextChunker
+
 
 
 class DocumentManager:

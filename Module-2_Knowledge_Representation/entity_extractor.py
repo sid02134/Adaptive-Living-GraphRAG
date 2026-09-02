@@ -8,33 +8,39 @@ import re
 from typing import List, Dict, Any, Set
 from pathlib import Path
 try:
-    from config import Module2Config
-except (ImportError, AttributeError):
-    import importlib.util
-    _cfg_path = Path(__file__).resolve().parent / "config.py"
-    _spec = importlib.util.spec_from_file_location("module2_config", _cfg_path)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    Module2Config = _mod.Module2Config
-try:
-    from exceptions import EntityExtractionError
-except (ImportError, AttributeError):
-    import importlib.util
-    _ex_path = Path(__file__).resolve().parent / "exceptions.py"
-    _spec = importlib.util.spec_from_file_location("module2_exceptions", _ex_path)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    EntityExtractionError = getattr(_mod, "EntityExtractionError")
-try:
-    from utils import logger, clean_entity_text
-except (ImportError, AttributeError):
-    import importlib.util
-    _ut_path = Path(__file__).resolve().parent / "utils.py"
-    _spec = importlib.util.spec_from_file_location("module2_utils", _ut_path)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    logger = getattr(_mod, "logger")
-    clean_entity_text = getattr(_mod, "clean_entity_text")
+    from .config import Module2Config
+    from .exceptions import EntityExtractionError
+    from .utils import logger, clean_entity_text
+except (ImportError, ValueError):
+    try:
+        from config import Module2Config
+    except (ImportError, AttributeError):
+        import importlib.util
+        _cfg_path = Path(__file__).resolve().parent / "config.py"
+        _spec = importlib.util.spec_from_file_location("module2_config", _cfg_path)
+        _mod = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        Module2Config = _mod.Module2Config
+    try:
+        from exceptions import EntityExtractionError
+    except (ImportError, AttributeError):
+        import importlib.util
+        _ex_path = Path(__file__).resolve().parent / "exceptions.py"
+        _spec = importlib.util.spec_from_file_location("module2_exceptions", _ex_path)
+        _mod = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        EntityExtractionError = getattr(_mod, "EntityExtractionError")
+    try:
+        from utils import logger, clean_entity_text
+    except (ImportError, AttributeError):
+        import importlib.util
+        _ut_path = Path(__file__).resolve().parent / "utils.py"
+        _spec = importlib.util.spec_from_file_location("module2_utils", _ut_path)
+        _mod = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        logger = getattr(_mod, "logger")
+        clean_entity_text = getattr(_mod, "clean_entity_text")
+
 
 
 class EntityExtractor:

@@ -7,23 +7,28 @@ Purpose: Fuse vector text chunks and Neo4j graph subgraphs into formatted contex
 from typing import List, Dict, Any
 from pathlib import Path
 try:
-    from exceptions import ContextBuildError
-except (ImportError, AttributeError):
-    import importlib.util
-    _ex_path = Path(__file__).resolve().parent / "exceptions.py"
-    _spec = importlib.util.spec_from_file_location("module3_exceptions", _ex_path)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    ContextBuildError = getattr(_mod, "ContextBuildError")
-try:
-    from utils import logger
-except (ImportError, AttributeError):
-    import importlib.util
-    _ut_path = Path(__file__).resolve().parent / "utils.py"
-    _spec = importlib.util.spec_from_file_location("module3_utils", _ut_path)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    logger = getattr(_mod, "logger")
+    from .exceptions import ContextBuildError
+    from .utils import logger
+except (ImportError, ValueError):
+    try:
+        from exceptions import ContextBuildError
+    except (ImportError, AttributeError):
+        import importlib.util
+        _ex_path = Path(__file__).resolve().parent / "exceptions.py"
+        _spec = importlib.util.spec_from_file_location("module3_exceptions", _ex_path)
+        _mod = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        ContextBuildError = getattr(_mod, "ContextBuildError")
+    try:
+        from utils import logger
+    except (ImportError, AttributeError):
+        import importlib.util
+        _ut_path = Path(__file__).resolve().parent / "utils.py"
+        _spec = importlib.util.spec_from_file_location("module3_utils", _ut_path)
+        _mod = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        logger = getattr(_mod, "logger")
+
 
 
 class ContextBuilder:

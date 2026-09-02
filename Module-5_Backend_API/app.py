@@ -17,16 +17,30 @@ if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
 try:
-    from config import Module5Config
-except (ImportError, AttributeError):
-    import importlib.util
-    _cfg_path = Path(__file__).resolve().parent / "config.py"
-    _spec = importlib.util.spec_from_file_location("module5_config", _cfg_path)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    Module5Config = _mod.Module5Config
-from routes import api_v1_router
-from exceptions import global_exception_handler
+    from .config import Module5Config
+    from .routes import api_v1_router
+    from .exceptions import global_exception_handler
+except (ImportError, ValueError):
+    try:
+        from config import Module5Config
+    except (ImportError, AttributeError):
+        import importlib.util
+        _cfg_path = Path(__file__).resolve().parent / "config.py"
+        _spec = importlib.util.spec_from_file_location("module5_config", _cfg_path)
+        _mod = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        Module5Config = _mod.Module5Config
+    from routes import api_v1_router
+    try:
+        from exceptions import global_exception_handler
+    except (ImportError, AttributeError):
+        import importlib.util
+        _ex_path = Path(__file__).resolve().parent / "exceptions.py"
+        _spec = importlib.util.spec_from_file_location("mod5_exceptions", _ex_path)
+        _mod = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        global_exception_handler = getattr(_mod, "global_exception_handler")
+
 
 
 def setup_logger(name: str = "backend_logger") -> logging.Logger:

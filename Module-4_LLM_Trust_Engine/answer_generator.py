@@ -9,32 +9,40 @@ import sys
 from pathlib import Path
 from typing import Dict, Any, Optional
 
-sys.path.append(str(Path(__file__).resolve().parent.parent / "Module-3_GraphRAG_Retrieval"))
-
 try:
-    from config import Module4Config
-except (ImportError, AttributeError):
-    import importlib.util
-    _cfg_path = Path(__file__).resolve().parent / "config.py"
-    _spec = importlib.util.spec_from_file_location("module4_config", _cfg_path)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    Module4Config = _mod.Module4Config
-from ollama_client import OllamaClient
-from trust_score import TrustEvaluator
-from source_ranker import SourceRanker
-from conflict_resolution import ConflictResolver
-from citation_generator import CitationGenerator
-from response_formatter import ResponseFormatter
-try:
-    from utils import llm_logger
-except (ImportError, AttributeError):
-    import importlib.util
-    _ut_path = Path(__file__).resolve().parent / "utils.py"
-    _spec = importlib.util.spec_from_file_location("mod4_utils", _ut_path)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    llm_logger = getattr(_mod, "llm_logger")
+    from .config import Module4Config
+    from .ollama_client import OllamaClient
+    from .trust_score import TrustEvaluator
+    from .source_ranker import SourceRanker
+    from .conflict_resolution import ConflictResolver
+    from .citation_generator import CitationGenerator
+    from .response_formatter import ResponseFormatter
+    from .utils import llm_logger
+except (ImportError, ValueError):
+    try:
+        from config import Module4Config
+    except (ImportError, AttributeError):
+        import importlib.util
+        _cfg_path = Path(__file__).resolve().parent / "config.py"
+        _spec = importlib.util.spec_from_file_location("module4_config", _cfg_path)
+        _mod = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        Module4Config = _mod.Module4Config
+    from ollama_client import OllamaClient
+    from trust_score import TrustEvaluator
+    from source_ranker import SourceRanker
+    from conflict_resolution import ConflictResolver
+    from citation_generator import CitationGenerator
+    from response_formatter import ResponseFormatter
+    try:
+        from utils import llm_logger
+    except (ImportError, AttributeError):
+        import importlib.util
+        _ut_path = Path(__file__).resolve().parent / "utils.py"
+        _spec = importlib.util.spec_from_file_location("mod4_utils", _ut_path)
+        _mod = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        llm_logger = getattr(_mod, "llm_logger")
 
 
 class AnswerGenerator:
@@ -65,11 +73,8 @@ class AnswerGenerator:
 
         if retriever_pipeline is None:
             try:
-                mod3_path = Path(__file__).resolve().parent.parent / "Module-3_GraphRAG_Retrieval"
-                if str(mod3_path) not in sys.path:
-                    sys.path.insert(0, str(mod3_path))
                 import importlib
-                ret_mod = importlib.import_module("retriever")
+                ret_mod = importlib.import_module("Module-3_GraphRAG_Retrieval.retriever")
                 GraphRAGRetriever = getattr(ret_mod, "GraphRAGRetriever")
                 self.retriever_pipeline = GraphRAGRetriever()
             except Exception as e:
@@ -77,6 +82,7 @@ class AnswerGenerator:
                 self.retriever_pipeline = None
         else:
             self.retriever_pipeline = retriever_pipeline
+
 
     def generate_answer(
         self,

@@ -7,26 +7,33 @@ Purpose: Perform weighted hybrid score fusion combining vector search and graph 
 from typing import List, Dict, Any, Optional
 from pathlib import Path
 try:
-    from config import Module3Config
-except (ImportError, AttributeError):
-    import importlib.util
-    _cfg_path = Path(__file__).resolve().parent / "config.py"
-    _spec = importlib.util.spec_from_file_location("module3_config", _cfg_path)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    Module3Config = _mod.Module3Config
-from vector_retriever import VectorRetriever
-from graph_retriever import GraphRetriever
-try:
-    from utils import logger, normalize_scores
-except (ImportError, AttributeError):
-    import importlib.util
-    _ut_path = Path(__file__).resolve().parent / "utils.py"
-    _spec = importlib.util.spec_from_file_location("module3_utils", _ut_path)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    logger = getattr(_mod, "logger")
-    normalize_scores = getattr(_mod, "normalize_scores")
+    from .config import Module3Config
+    from .vector_retriever import VectorRetriever
+    from .graph_retriever import GraphRetriever
+    from .utils import logger, normalize_scores
+except (ImportError, ValueError):
+    try:
+        from config import Module3Config
+    except (ImportError, AttributeError):
+        import importlib.util
+        _cfg_path = Path(__file__).resolve().parent / "config.py"
+        _spec = importlib.util.spec_from_file_location("module3_config", _cfg_path)
+        _mod = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        Module3Config = _mod.Module3Config
+    from vector_retriever import VectorRetriever
+    from graph_retriever import GraphRetriever
+    try:
+        from utils import logger, normalize_scores
+    except (ImportError, AttributeError):
+        import importlib.util
+        _ut_path = Path(__file__).resolve().parent / "utils.py"
+        _spec = importlib.util.spec_from_file_location("module3_utils", _ut_path)
+        _mod = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        logger = getattr(_mod, "logger")
+        normalize_scores = getattr(_mod, "normalize_scores")
+
 
 
 class HybridRetriever:

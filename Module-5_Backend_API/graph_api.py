@@ -8,7 +8,11 @@ from fastapi import APIRouter, Query
 import importlib
 import logging
 
-from models import GraphResponse, GraphNode, GraphEdge
+try:
+    from .models import GraphResponse, GraphNode, GraphEdge
+except (ImportError, ValueError):
+    from models import GraphResponse, GraphNode, GraphEdge
+
 
 router = APIRouter(tags=["Knowledge Graph"])
 logger = logging.getLogger("backend_logger")

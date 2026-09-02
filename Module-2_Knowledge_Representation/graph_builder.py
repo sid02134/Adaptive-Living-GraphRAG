@@ -12,29 +12,39 @@ from typing import List, Dict, Any, Optional
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 try:
-    from config import Module2Config
-except (ImportError, AttributeError):
-    import importlib.util
-    _cfg_path = Path(__file__).resolve().parent / "config.py"
-    _spec = importlib.util.spec_from_file_location("module2_config", _cfg_path)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    Module2Config = _mod.Module2Config
-from embedding_generator import EmbeddingGenerator
-from chroma_manager import ChromaManager
-from entity_extractor import EntityExtractor
-from relationship_builder import RelationshipBuilder
-from neo4j_manager import Neo4jManager
-try:
-    from utils import logger, setup_logger
-except (ImportError, AttributeError):
-    import importlib.util
-    _ut_path = Path(__file__).resolve().parent / "utils.py"
-    _spec = importlib.util.spec_from_file_location("module2_utils", _ut_path)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    logger = getattr(_mod, "logger")
-    setup_logger = getattr(_mod, "setup_logger")
+    from .config import Module2Config
+    from .embedding_generator import EmbeddingGenerator
+    from .chroma_manager import ChromaManager
+    from .entity_extractor import EntityExtractor
+    from .relationship_builder import RelationshipBuilder
+    from .neo4j_manager import Neo4jManager
+    from .utils import logger, setup_logger
+except (ImportError, ValueError):
+    try:
+        from config import Module2Config
+    except (ImportError, AttributeError):
+        import importlib.util
+        _cfg_path = Path(__file__).resolve().parent / "config.py"
+        _spec = importlib.util.spec_from_file_location("module2_config", _cfg_path)
+        _mod = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        Module2Config = _mod.Module2Config
+    from embedding_generator import EmbeddingGenerator
+    from chroma_manager import ChromaManager
+    from entity_extractor import EntityExtractor
+    from relationship_builder import RelationshipBuilder
+    from neo4j_manager import Neo4jManager
+    try:
+        from utils import logger, setup_logger
+    except (ImportError, AttributeError):
+        import importlib.util
+        _ut_path = Path(__file__).resolve().parent / "utils.py"
+        _spec = importlib.util.spec_from_file_location("module2_utils", _ut_path)
+        _mod = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        logger = getattr(_mod, "logger")
+        setup_logger = getattr(_mod, "setup_logger")
+
 
 
 class GraphBuilder:

@@ -11,24 +11,36 @@ except ImportError:
     pytest = None
 from pathlib import Path
 
-# Add Module 2 directory to path
-sys.path.append(str(Path(__file__).resolve().parent))
+import importlib
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 try:
+    mod2_cfg = importlib.import_module("Module-2_Knowledge_Representation.config")
+    Module2Config = getattr(mod2_cfg, "Module2Config")
+    mod2_eg = importlib.import_module("Module-2_Knowledge_Representation.embedding_generator")
+    EmbeddingGenerator = getattr(mod2_eg, "EmbeddingGenerator")
+    mod2_cm = importlib.import_module("Module-2_Knowledge_Representation.chroma_manager")
+    ChromaManager = getattr(mod2_cm, "ChromaManager")
+    mod2_ee = importlib.import_module("Module-2_Knowledge_Representation.entity_extractor")
+    EntityExtractor = getattr(mod2_ee, "EntityExtractor")
+    mod2_rb = importlib.import_module("Module-2_Knowledge_Representation.relationship_builder")
+    RelationshipBuilder = getattr(mod2_rb, "RelationshipBuilder")
+    mod2_nm = importlib.import_module("Module-2_Knowledge_Representation.neo4j_manager")
+    Neo4jManager = getattr(mod2_nm, "Neo4jManager")
+    mod2_gb = importlib.import_module("Module-2_Knowledge_Representation.graph_builder")
+    GraphBuilder = getattr(mod2_gb, "GraphBuilder")
+except Exception:
     from config import Module2Config
-except (ImportError, AttributeError):
-    import importlib.util
-    _cfg_path = Path(__file__).resolve().parent / "config.py"
-    _spec = importlib.util.spec_from_file_location("module2_config", _cfg_path)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    Module2Config = _mod.Module2Config
-from embedding_generator import EmbeddingGenerator
-from chroma_manager import ChromaManager
-from entity_extractor import EntityExtractor
-from relationship_builder import RelationshipBuilder
-from neo4j_manager import Neo4jManager
-from graph_builder import GraphBuilder
+    from embedding_generator import EmbeddingGenerator
+    from chroma_manager import ChromaManager
+    from entity_extractor import EntityExtractor
+    from relationship_builder import RelationshipBuilder
+    from neo4j_manager import Neo4jManager
+    from graph_builder import GraphBuilder
+
+
 
 
 def test_embedding_generator():

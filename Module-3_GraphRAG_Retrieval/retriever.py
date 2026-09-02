@@ -7,26 +7,34 @@ Purpose: Main GraphRAGRetriever pipeline orchestrating vector search, graph sear
 from typing import Dict, Any, Optional
 from pathlib import Path
 try:
-    from config import Module3Config
-except (ImportError, AttributeError):
-    import importlib.util
-    _cfg_path = Path(__file__).resolve().parent / "config.py"
-    _spec = importlib.util.spec_from_file_location("module3_config", _cfg_path)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    Module3Config = _mod.Module3Config
-from hybrid_retriever import HybridRetriever
-from context_builder import ContextBuilder
-from prompt_builder import PromptBuilder
-try:
-    from utils import logger
-except (ImportError, AttributeError):
-    import importlib.util
-    _ut_path = Path(__file__).resolve().parent / "utils.py"
-    _spec = importlib.util.spec_from_file_location("module3_utils", _ut_path)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    logger = getattr(_mod, "logger")
+    from .config import Module3Config
+    from .hybrid_retriever import HybridRetriever
+    from .context_builder import ContextBuilder
+    from .prompt_builder import PromptBuilder
+    from .utils import logger
+except (ImportError, ValueError):
+    try:
+        from config import Module3Config
+    except (ImportError, AttributeError):
+        import importlib.util
+        _cfg_path = Path(__file__).resolve().parent / "config.py"
+        _spec = importlib.util.spec_from_file_location("module3_config", _cfg_path)
+        _mod = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        Module3Config = _mod.Module3Config
+    from hybrid_retriever import HybridRetriever
+    from context_builder import ContextBuilder
+    from prompt_builder import PromptBuilder
+    try:
+        from utils import logger
+    except (ImportError, AttributeError):
+        import importlib.util
+        _ut_path = Path(__file__).resolve().parent / "utils.py"
+        _spec = importlib.util.spec_from_file_location("module3_utils", _ut_path)
+        _mod = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        logger = getattr(_mod, "logger")
+
 
 
 class GraphRAGRetriever:

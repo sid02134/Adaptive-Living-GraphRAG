@@ -15,7 +15,8 @@ export const PDFUploader = ({ onUploadSuccess }) => {
   const handleFileSelect = async (file) => {
     if (!file) return;
 
-    if (!file.name.toLowerCase().endswith('.pdf')) {
+    if (!file.name.toLowerCase().endsWith('.pdf')) {
+
       setErrorMessage('Invalid file format. Only PDF files are supported.');
       return;
     }

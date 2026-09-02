@@ -6,11 +6,19 @@ Purpose: Route aggregator registering all APIRouters under /api/v1.
 
 from fastapi import APIRouter
 
-from health_api import router as health_router
-from upload_api import router as upload_router
-from chat_api import router as chat_router
-from graph_api import router as graph_router
-from trust_api import router as trust_router
+try:
+    from .health_api import router as health_router
+    from .upload_api import router as upload_router
+    from .chat_api import router as chat_router
+    from .graph_api import router as graph_router
+    from .trust_api import router as trust_router
+except (ImportError, ValueError):
+    from health_api import router as health_router
+    from upload_api import router as upload_router
+    from chat_api import router as chat_router
+    from graph_api import router as graph_router
+    from trust_api import router as trust_router
+
 
 api_v1_router = APIRouter(prefix="/api/v1")
 

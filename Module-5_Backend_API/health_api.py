@@ -8,7 +8,11 @@ from fastapi import APIRouter
 import urllib.request
 import logging
 
-from models import HealthResponse, ComponentStatus
+try:
+    from .models import HealthResponse, ComponentStatus
+except (ImportError, ValueError):
+    from models import HealthResponse, ComponentStatus
+
 
 router = APIRouter(tags=["Health"])
 logger = logging.getLogger("backend_logger")

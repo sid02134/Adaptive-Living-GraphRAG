@@ -7,32 +7,39 @@ Purpose: Implement 4-tier Trust Score evaluation formula and metric breakdowns.
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 try:
-    from config import Module4Config
-except (ImportError, AttributeError):
-    import importlib.util
-    _cfg_path = Path(__file__).resolve().parent / "config.py"
-    _spec = importlib.util.spec_from_file_location("module4_config", _cfg_path)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    Module4Config = _mod.Module4Config
-try:
-    from exceptions import TrustScoreError
-except (ImportError, AttributeError):
-    import importlib.util
-    _ex_path = Path(__file__).resolve().parent / "exceptions.py"
-    _spec = importlib.util.spec_from_file_location("mod4_exceptions", _ex_path)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    TrustScoreError = getattr(_mod, "TrustScoreError")
-try:
-    from utils import trust_logger, clamp
-except (ImportError, AttributeError):
-    import importlib.util
-    _ut_path = Path(__file__).resolve().parent / "utils.py"
-    _spec = importlib.util.spec_from_file_location("mod4_utils", _ut_path)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    trust_logger = getattr(_mod, "trust_logger")
+    from .config import Module4Config
+    from .exceptions import TrustScoreError
+    from .utils import trust_logger, clamp
+except (ImportError, ValueError):
+    try:
+        from config import Module4Config
+    except (ImportError, AttributeError):
+        import importlib.util
+        _cfg_path = Path(__file__).resolve().parent / "config.py"
+        _spec = importlib.util.spec_from_file_location("module4_config", _cfg_path)
+        _mod = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        Module4Config = _mod.Module4Config
+    try:
+        from exceptions import TrustScoreError
+    except (ImportError, AttributeError):
+        import importlib.util
+        _ex_path = Path(__file__).resolve().parent / "exceptions.py"
+        _spec = importlib.util.spec_from_file_location("mod4_exceptions", _ex_path)
+        _mod = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        TrustScoreError = getattr(_mod, "TrustScoreError")
+    try:
+        from utils import trust_logger, clamp
+    except (ImportError, AttributeError):
+        import importlib.util
+        _ut_path = Path(__file__).resolve().parent / "utils.py"
+        _spec = importlib.util.spec_from_file_location("mod4_utils", _ut_path)
+        _mod = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        trust_logger = getattr(_mod, "trust_logger")
+        clamp = getattr(_mod, "clamp")
+
     clamp = getattr(_mod, "clamp")
 
 

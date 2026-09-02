@@ -10,7 +10,11 @@ from pathlib import Path
 from fastapi import APIRouter, UploadFile, File, HTTPException
 import logging
 
-from models import UploadResponse
+try:
+    from .models import UploadResponse
+except (ImportError, ValueError):
+    from models import UploadResponse
+
 
 router = APIRouter(tags=["Document Ingestion"])
 logger = logging.getLogger("backend_logger")

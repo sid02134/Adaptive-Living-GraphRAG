@@ -8,7 +8,10 @@ from fastapi import APIRouter, HTTPException, Depends
 import importlib
 import logging
 
-from models import AskRequest, AskResponse
+try:
+    from .models import AskRequest, AskResponse
+except (ImportError, ValueError):
+    from models import AskRequest, AskResponse
 
 router = APIRouter(tags=["GraphRAG Chat"])
 logger = logging.getLogger("backend_logger")
@@ -17,18 +20,14 @@ logger = logging.getLogger("backend_logger")
 def get_answer_generator():
     """Dependency injection helper for AnswerGenerator pipeline."""
     try:
-        from pathlib import Path
-        import sys
-        mod4_path = Path(__file__).resolve().parent.parent / "Module-4_LLM_Trust_Engine"
-        if str(mod4_path) not in sys.path:
-            sys.path.insert(0, str(mod4_path))
         import importlib
-        mod4 = importlib.import_module("answer_generator")
+        mod4 = importlib.import_module("Module-4_LLM_Trust_Engine.answer_generator")
         AnswerGenerator = getattr(mod4, "AnswerGenerator")
         return AnswerGenerator()
     except Exception as e:
         logger.error(f"Failed to load AnswerGenerator: {e}")
         return None
+
 
 
 @router.post("/ask", response_model=AskResponse)

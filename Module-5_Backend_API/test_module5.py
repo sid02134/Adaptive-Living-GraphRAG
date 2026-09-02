@@ -8,15 +8,34 @@ import sys
 import asyncio
 from pathlib import Path
 
-# Add Module 5 directory to path
-sys.path.append(str(Path(__file__).resolve().parent))
+ROOT_DIR = Path(__file__).resolve().parent.parent
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
 
-from app import app
-from health_api import get_health_status
-from chat_api import ask_question
-from graph_api import get_knowledge_graph
-from trust_api import get_dashboard_statistics, get_trust_breakdown
-from models import AskRequest
+import importlib
+
+try:
+    mod5_app = importlib.import_module("Module-5_Backend_API.app")
+    app = getattr(mod5_app, "app")
+    mod5_ha = importlib.import_module("Module-5_Backend_API.health_api")
+    get_health_status = getattr(mod5_ha, "get_health_status")
+    mod5_ca = importlib.import_module("Module-5_Backend_API.chat_api")
+    ask_question = getattr(mod5_ca, "ask_question")
+    mod5_ga = importlib.import_module("Module-5_Backend_API.graph_api")
+    get_knowledge_graph = getattr(mod5_ga, "get_knowledge_graph")
+    mod5_ta = importlib.import_module("Module-5_Backend_API.trust_api")
+    get_dashboard_statistics = getattr(mod5_ta, "get_dashboard_statistics")
+    get_trust_breakdown = getattr(mod5_ta, "get_trust_breakdown")
+    mod5_m = importlib.import_module("Module-5_Backend_API.models")
+    AskRequest = getattr(mod5_m, "AskRequest")
+except Exception:
+    from app import app
+    from health_api import get_health_status
+    from chat_api import ask_question
+    from graph_api import get_knowledge_graph
+    from trust_api import get_dashboard_statistics, get_trust_breakdown
+    from models import AskRequest
+
 
 
 def test_root_endpoint():

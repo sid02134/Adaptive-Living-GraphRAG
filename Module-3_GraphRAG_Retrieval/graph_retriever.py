@@ -8,35 +8,38 @@ import sys
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 
-sys.path.append(str(Path(__file__).resolve().parent.parent / "Module-2_Knowledge_Representation"))
-
 try:
-    from config import Module3Config
-except (ImportError, AttributeError):
-    import importlib.util
-    _cfg_path = Path(__file__).resolve().parent / "config.py"
-    _spec = importlib.util.spec_from_file_location("module3_config", _cfg_path)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    Module3Config = _mod.Module3Config
-try:
-    from exceptions import GraphSearchError
-except (ImportError, AttributeError):
-    import importlib.util
-    _ex_path = Path(__file__).resolve().parent / "exceptions.py"
-    _spec = importlib.util.spec_from_file_location("module3_exceptions", _ex_path)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    GraphSearchError = getattr(_mod, "GraphSearchError")
-try:
-    from utils import logger
-except (ImportError, AttributeError):
-    import importlib.util
-    _ut_path = Path(__file__).resolve().parent / "utils.py"
-    _spec = importlib.util.spec_from_file_location("module3_utils", _ut_path)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    logger = getattr(_mod, "logger")
+    from .config import Module3Config
+    from .exceptions import GraphSearchError
+    from .utils import logger
+except (ImportError, ValueError):
+    try:
+        from config import Module3Config
+    except (ImportError, AttributeError):
+        import importlib.util
+        _cfg_path = Path(__file__).resolve().parent / "config.py"
+        _spec = importlib.util.spec_from_file_location("module3_config", _cfg_path)
+        _mod = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        Module3Config = _mod.Module3Config
+    try:
+        from exceptions import GraphSearchError
+    except (ImportError, AttributeError):
+        import importlib.util
+        _ex_path = Path(__file__).resolve().parent / "exceptions.py"
+        _spec = importlib.util.spec_from_file_location("module3_exceptions", _ex_path)
+        _mod = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        GraphSearchError = getattr(_mod, "GraphSearchError")
+    try:
+        from utils import logger
+    except (ImportError, AttributeError):
+        import importlib.util
+        _ut_path = Path(__file__).resolve().parent / "utils.py"
+        _spec = importlib.util.spec_from_file_location("module3_utils", _ut_path)
+        _mod = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        logger = getattr(_mod, "logger")
 
 
 class GraphRetriever:
@@ -60,10 +63,9 @@ class GraphRetriever:
         """
         if entity_extractor is None:
             try:
-                mod2_path = Path(__file__).resolve().parent.parent / "Module-2_Knowledge_Representation"
-                if str(mod2_path) not in sys.path:
-                    sys.path.insert(0, str(mod2_path))
-                from entity_extractor import EntityExtractor
+                import importlib
+                mod2 = importlib.import_module("Module-2_Knowledge_Representation.entity_extractor")
+                EntityExtractor = getattr(mod2, "EntityExtractor")
                 self.entity_extractor = EntityExtractor()
             except Exception as e:
                 logger.warning(f"Using default EntityExtractor import: {e}")
@@ -73,16 +75,16 @@ class GraphRetriever:
 
         if neo4j_manager is None:
             try:
-                mod2_path = Path(__file__).resolve().parent.parent / "Module-2_Knowledge_Representation"
-                if str(mod2_path) not in sys.path:
-                    sys.path.insert(0, str(mod2_path))
-                from neo4j_manager import Neo4jManager
+                import importlib
+                mod2 = importlib.import_module("Module-2_Knowledge_Representation.neo4j_manager")
+                Neo4jManager = getattr(mod2, "Neo4jManager")
                 self.neo4j_manager = Neo4jManager()
             except Exception as e:
                 logger.warning(f"Using default Neo4jManager import: {e}")
                 self.neo4j_manager = None
         else:
             self.neo4j_manager = neo4j_manager
+
 
     def retrieve(self, query: str, top_k: int = Module3Config.TOP_K) -> Dict[str, Any]:
         """Retrieve related subgraphs, entity connections, and graph relevance scores for query.

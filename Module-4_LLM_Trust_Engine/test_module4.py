@@ -7,17 +7,39 @@ Purpose: Unit and integration tests for Module 4 components.
 import sys
 from pathlib import Path
 
-# Add Module 4 directory to path
-sys.path.append(str(Path(__file__).resolve().parent))
+ROOT_DIR = Path(__file__).resolve().parent.parent
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
 
-from config import Module4Config
-from ollama_client import OllamaClient
-from trust_score import TrustEvaluator
-from source_ranker import SourceRanker
-from conflict_resolution import ConflictResolver
-from citation_generator import CitationGenerator
-from response_formatter import ResponseFormatter
-from answer_generator import AnswerGenerator
+import importlib
+
+try:
+    mod4_cfg = importlib.import_module("Module-4_LLM_Trust_Engine.config")
+    Module4Config = getattr(mod4_cfg, "Module4Config")
+    mod4_oc = importlib.import_module("Module-4_LLM_Trust_Engine.ollama_client")
+    OllamaClient = getattr(mod4_oc, "OllamaClient")
+    mod4_te = importlib.import_module("Module-4_LLM_Trust_Engine.trust_score")
+    TrustEvaluator = getattr(mod4_te, "TrustEvaluator")
+    mod4_sr = importlib.import_module("Module-4_LLM_Trust_Engine.source_ranker")
+    SourceRanker = getattr(mod4_sr, "SourceRanker")
+    mod4_cr = importlib.import_module("Module-4_LLM_Trust_Engine.conflict_resolution")
+    ConflictResolver = getattr(mod4_cr, "ConflictResolver")
+    mod4_cg = importlib.import_module("Module-4_LLM_Trust_Engine.citation_generator")
+    CitationGenerator = getattr(mod4_cg, "CitationGenerator")
+    mod4_rf = importlib.import_module("Module-4_LLM_Trust_Engine.response_formatter")
+    ResponseFormatter = getattr(mod4_rf, "ResponseFormatter")
+    mod4_ag = importlib.import_module("Module-4_LLM_Trust_Engine.answer_generator")
+    AnswerGenerator = getattr(mod4_ag, "AnswerGenerator")
+except Exception:
+    from config import Module4Config
+    from ollama_client import OllamaClient
+    from trust_score import TrustEvaluator
+    from source_ranker import SourceRanker
+    from conflict_resolution import ConflictResolver
+    from citation_generator import CitationGenerator
+    from response_formatter import ResponseFormatter
+    from answer_generator import AnswerGenerator
+
 
 
 def test_ollama_client():

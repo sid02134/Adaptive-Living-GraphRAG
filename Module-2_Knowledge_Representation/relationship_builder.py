@@ -7,14 +7,18 @@ Purpose: Construct directed relationships between nodes (Document, Chunk, Entity
 from typing import List, Dict, Any, Tuple
 from pathlib import Path
 try:
-    from utils import logger
-except (ImportError, AttributeError):
-    import importlib.util
-    _ut_path = Path(__file__).resolve().parent / "utils.py"
-    _spec = importlib.util.spec_from_file_location("module2_utils", _ut_path)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    logger = getattr(_mod, "logger")
+    from .utils import logger
+except (ImportError, ValueError):
+    try:
+        from utils import logger
+    except (ImportError, AttributeError):
+        import importlib.util
+        _ut_path = Path(__file__).resolve().parent / "utils.py"
+        _spec = importlib.util.spec_from_file_location("module2_utils", _ut_path)
+        _mod = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        logger = getattr(_mod, "logger")
+
 
 
 class RelationshipBuilder:

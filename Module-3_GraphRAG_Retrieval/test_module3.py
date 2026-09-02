@@ -7,24 +7,36 @@ Purpose: Unit and integration tests for Module 3 components.
 import sys
 from pathlib import Path
 
-# Add Module 3 directory to path
-sys.path.append(str(Path(__file__).resolve().parent))
+import importlib
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 try:
+    mod3_cfg = importlib.import_module("Module-3_GraphRAG_Retrieval.config")
+    Module3Config = getattr(mod3_cfg, "Module3Config")
+    mod3_vr = importlib.import_module("Module-3_GraphRAG_Retrieval.vector_retriever")
+    VectorRetriever = getattr(mod3_vr, "VectorRetriever")
+    mod3_gr = importlib.import_module("Module-3_GraphRAG_Retrieval.graph_retriever")
+    GraphRetriever = getattr(mod3_gr, "GraphRetriever")
+    mod3_hr = importlib.import_module("Module-3_GraphRAG_Retrieval.hybrid_retriever")
+    HybridRetriever = getattr(mod3_hr, "HybridRetriever")
+    mod3_cb = importlib.import_module("Module-3_GraphRAG_Retrieval.context_builder")
+    ContextBuilder = getattr(mod3_cb, "ContextBuilder")
+    mod3_pb = importlib.import_module("Module-3_GraphRAG_Retrieval.prompt_builder")
+    PromptBuilder = getattr(mod3_pb, "PromptBuilder")
+    mod3_ret = importlib.import_module("Module-3_GraphRAG_Retrieval.retriever")
+    GraphRAGRetriever = getattr(mod3_ret, "GraphRAGRetriever")
+except Exception:
     from config import Module3Config
-except (ImportError, AttributeError):
-    import importlib.util
-    _cfg_path = Path(__file__).resolve().parent / "config.py"
-    _spec = importlib.util.spec_from_file_location("module3_config", _cfg_path)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    Module3Config = _mod.Module3Config
-from vector_retriever import VectorRetriever
-from graph_retriever import GraphRetriever
-from hybrid_retriever import HybridRetriever
-from context_builder import ContextBuilder
-from prompt_builder import PromptBuilder
-from retriever import GraphRAGRetriever
+    from vector_retriever import VectorRetriever
+    from graph_retriever import GraphRetriever
+    from hybrid_retriever import HybridRetriever
+    from context_builder import ContextBuilder
+    from prompt_builder import PromptBuilder
+    from retriever import GraphRAGRetriever
+
+
 
 
 def test_vector_retriever():

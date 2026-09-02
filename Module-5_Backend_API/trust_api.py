@@ -8,7 +8,11 @@ from fastapi import APIRouter
 import importlib
 import logging
 
-from models import DashboardResponse, TrustBreakdown
+try:
+    from .models import DashboardResponse, TrustBreakdown
+except (ImportError, ValueError):
+    from models import DashboardResponse, TrustBreakdown
+
 
 router = APIRouter(tags=["Analytics & Trust"])
 logger = logging.getLogger("backend_logger")
