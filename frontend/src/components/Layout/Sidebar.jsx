@@ -12,6 +12,7 @@ import {
   Brain,
   X,
   Sparkles,
+  GitMerge,
 } from 'lucide-react';
 
 const navigationItems = [
@@ -19,6 +20,7 @@ const navigationItems = [
   { name: 'Documents', path: '/documents', icon: FileText },
   { name: 'AI Chat', path: '/chat', icon: MessageSquare, badge: 'RAG' },
   { name: 'Knowledge Graph', path: '/graph', icon: Network },
+  { name: 'Knowledge Evolution', path: '/evolution', icon: GitMerge, badge: 'Mod 6' },
   { name: 'Trust Dashboard', path: '/trust', icon: ShieldCheck, highlight: true },
   { name: 'Analytics', path: '/analytics', icon: BarChart3 },
   { name: 'Settings', path: '/settings', icon: SettingsIcon },

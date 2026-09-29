@@ -1,0 +1,739 @@
+[
+  {
+    "claim_id": "claim_f2519eab",
+    "decision": "ADD",
+    "reasoning": "New knowledge fact detected. Added to graph and vector store.",
+    "trust_breakdown": {
+      "source_reliability": 0.8,
+      "freshness": 1.0,
+      "evidence_support": 0.5,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.78,
+      "score_percentage": "78.0%",
+      "interpretation": "This claim has a score of 0.78 (Moderate System Confidence). Note: This score reflects system-level confidence based on available source reliability (0.80), freshness (1.00), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_f2519eab",
+      "decision": "ADD",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:21:03.373030+00:00"
+  },
+  {
+    "claim_id": "claim_d9ac805d",
+    "decision": "ADD",
+    "reasoning": "New knowledge fact detected. Added to graph and vector store.",
+    "trust_breakdown": {
+      "source_reliability": 0.95,
+      "freshness": 1.0,
+      "evidence_support": 0.4792,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.8133,
+      "score_percentage": "81.3%",
+      "interpretation": "This claim has a score of 0.81 (Moderate System Confidence). Note: This score reflects system-level confidence based on available source reliability (0.95), freshness (1.00), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_d9ac805d",
+      "decision": "ADD",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:21:29.117321+00:00"
+  },
+  {
+    "claim_id": "claim_f2698e04",
+    "decision": "ADD",
+    "reasoning": "New knowledge fact detected. Added to graph and vector store.",
+    "trust_breakdown": {
+      "source_reliability": 0.9,
+      "freshness": 1.0,
+      "evidence_support": 0.5,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.805,
+      "score_percentage": "80.5%",
+      "interpretation": "This claim has a score of 0.81 (Moderate System Confidence). Note: This score reflects system-level confidence based on available source reliability (0.90), freshness (1.00), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_f2698e04",
+      "decision": "ADD",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:21:56.129114+00:00"
+  },
+  {
+    "claim_id": "claim_f2698e04",
+    "decision": "UPDATE",
+    "reasoning": "Fact already exists. Updated metadata and verified claim 'claim_f2698e04'.",
+    "trust_breakdown": {
+      "source_reliability": 0.9,
+      "freshness": 1.0,
+      "evidence_support": 0.5,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.805,
+      "score_percentage": "80.5%",
+      "interpretation": "This claim has a score of 0.81 (Moderate System Confidence). Note: This score reflects system-level confidence based on available source reliability (0.90), freshness (1.00), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_f2698e04",
+      "decision": "UPDATE",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:22:00.249813+00:00"
+  },
+  {
+    "claim_id": "claim_ceo_001",
+    "decision": "ARCHIVE",
+    "reasoning": "Information is historically outdated and marked for archiving.",
+    "trust_breakdown": {
+      "source_reliability": 0.8,
+      "freshness": 0.0,
+      "evidence_support": 0.5,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.58,
+      "score_percentage": "58.0%",
+      "interpretation": "This claim has a score of 0.58 (Low/Cautious Confidence). Note: This score reflects system-level confidence based on available source reliability (0.80), freshness (0.00), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_ceo_001",
+      "decision": "ARCHIVE",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:22:27.159320+00:00"
+  },
+  {
+    "claim_id": "claim_ceo_002",
+    "decision": "ADD",
+    "reasoning": "New knowledge fact detected. Added to graph and vector store.",
+    "trust_breakdown": {
+      "source_reliability": 0.8,
+      "freshness": 1.0,
+      "evidence_support": 0.5,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.78,
+      "score_percentage": "78.0%",
+      "interpretation": "This claim has a score of 0.78 (Moderate System Confidence). Note: This score reflects system-level confidence based on available source reliability (0.80), freshness (1.00), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_ceo_002",
+      "decision": "ADD",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:22:31.332984+00:00"
+  },
+  {
+    "claim_id": "claim_fe3902ba",
+    "decision": "ADD",
+    "reasoning": "New knowledge fact detected. Added to graph and vector store.",
+    "trust_breakdown": {
+      "source_reliability": 0.9,
+      "freshness": 1.0,
+      "evidence_support": 0.4528,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.7956,
+      "score_percentage": "79.6%",
+      "interpretation": "This claim has a score of 0.80 (Moderate System Confidence). Note: This score reflects system-level confidence based on available source reliability (0.90), freshness (1.00), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_fe3902ba",
+      "decision": "ADD",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:22:39.415344+00:00"
+  },
+  {
+    "claim_id": "claim_6f0abdb8",
+    "decision": "ARCHIVE",
+    "reasoning": "Information is historically outdated and marked for archiving.",
+    "trust_breakdown": {
+      "source_reliability": 0.8,
+      "freshness": 0.0183,
+      "evidence_support": 0.5,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.5837,
+      "score_percentage": "58.4%",
+      "interpretation": "This claim has a score of 0.58 (Low/Cautious Confidence). Note: This score reflects system-level confidence based on available source reliability (0.80), freshness (0.02), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_6f0abdb8",
+      "decision": "ARCHIVE",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:22:57.197762+00:00"
+  },
+  {
+    "claim_id": "claim_ae2fada6",
+    "decision": "ADD",
+    "reasoning": "New knowledge fact detected. Added to graph and vector store.",
+    "trust_breakdown": {
+      "source_reliability": 0.8,
+      "freshness": 1.0,
+      "evidence_support": 0.5,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.78,
+      "score_percentage": "78.0%",
+      "interpretation": "This claim has a score of 0.78 (Moderate System Confidence). Note: This score reflects system-level confidence based on available source reliability (0.80), freshness (1.00), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_ae2fada6",
+      "decision": "ADD",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:25:09.525908+00:00"
+  },
+  {
+    "claim_id": "claim_29db47ef",
+    "decision": "ADD",
+    "reasoning": "New knowledge fact detected. Added to graph and vector store.",
+    "trust_breakdown": {
+      "source_reliability": 0.95,
+      "freshness": 1.0,
+      "evidence_support": 0.4792,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.8133,
+      "score_percentage": "81.3%",
+      "interpretation": "This claim has a score of 0.81 (Moderate System Confidence). Note: This score reflects system-level confidence based on available source reliability (0.95), freshness (1.00), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_29db47ef",
+      "decision": "ADD",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:25:34.846004+00:00"
+  },
+  {
+    "claim_id": "claim_fb57fc66",
+    "decision": "ADD",
+    "reasoning": "New knowledge fact detected. Added to graph and vector store.",
+    "trust_breakdown": {
+      "source_reliability": 0.9,
+      "freshness": 1.0,
+      "evidence_support": 0.5,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.805,
+      "score_percentage": "80.5%",
+      "interpretation": "This claim has a score of 0.81 (Moderate System Confidence). Note: This score reflects system-level confidence based on available source reliability (0.90), freshness (1.00), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_fb57fc66",
+      "decision": "ADD",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:26:02.854289+00:00"
+  },
+  {
+    "claim_id": "claim_fb57fc66",
+    "decision": "UPDATE",
+    "reasoning": "Fact already exists. Updated metadata and verified claim 'claim_fb57fc66'.",
+    "trust_breakdown": {
+      "source_reliability": 0.9,
+      "freshness": 1.0,
+      "evidence_support": 0.5,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.805,
+      "score_percentage": "80.5%",
+      "interpretation": "This claim has a score of 0.81 (Moderate System Confidence). Note: This score reflects system-level confidence based on available source reliability (0.90), freshness (1.00), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_fb57fc66",
+      "decision": "UPDATE",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:26:07.033866+00:00"
+  },
+  {
+    "claim_id": "claim_ceo_001",
+    "decision": "ARCHIVE",
+    "reasoning": "Information is historically outdated and marked for archiving.",
+    "trust_breakdown": {
+      "source_reliability": 0.8,
+      "freshness": 0.0,
+      "evidence_support": 0.5,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.58,
+      "score_percentage": "58.0%",
+      "interpretation": "This claim has a score of 0.58 (Low/Cautious Confidence). Note: This score reflects system-level confidence based on available source reliability (0.80), freshness (0.00), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_ceo_001",
+      "decision": "ARCHIVE",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:26:32.768552+00:00"
+  },
+  {
+    "claim_id": "claim_ceo_002",
+    "decision": "ADD",
+    "reasoning": "New knowledge fact detected. Added to graph and vector store.",
+    "trust_breakdown": {
+      "source_reliability": 0.8,
+      "freshness": 1.0,
+      "evidence_support": 0.5,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.78,
+      "score_percentage": "78.0%",
+      "interpretation": "This claim has a score of 0.78 (Moderate System Confidence). Note: This score reflects system-level confidence based on available source reliability (0.80), freshness (1.00), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_ceo_002",
+      "decision": "ADD",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:26:36.908870+00:00"
+  },
+  {
+    "claim_id": "claim_d31e4045",
+    "decision": "ADD",
+    "reasoning": "New knowledge fact detected. Added to graph and vector store.",
+    "trust_breakdown": {
+      "source_reliability": 0.8,
+      "freshness": 1.0,
+      "evidence_support": 0.5,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.78,
+      "score_percentage": "78.0%",
+      "interpretation": "This claim has a score of 0.78 (Moderate System Confidence). Note: This score reflects system-level confidence based on available source reliability (0.80), freshness (1.00), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_d31e4045",
+      "decision": "ADD",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:26:46.151831+00:00"
+  },
+  {
+    "claim_id": "claim_39e88a7f",
+    "decision": "ARCHIVE",
+    "reasoning": "Information is historically outdated and marked for archiving.",
+    "trust_breakdown": {
+      "source_reliability": 0.8,
+      "freshness": 0.0183,
+      "evidence_support": 0.5,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.5837,
+      "score_percentage": "58.4%",
+      "interpretation": "This claim has a score of 0.58 (Low/Cautious Confidence). Note: This score reflects system-level confidence based on available source reliability (0.80), freshness (0.02), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_39e88a7f",
+      "decision": "ARCHIVE",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:27:05.532653+00:00"
+  },
+  {
+    "claim_id": "claim_87f501cc",
+    "decision": "ADD",
+    "reasoning": "New knowledge fact detected. Added to graph and vector store.",
+    "trust_breakdown": {
+      "source_reliability": 0.95,
+      "freshness": 1.0,
+      "evidence_support": 0.4792,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.8133,
+      "score_percentage": "81.3%",
+      "interpretation": "This claim has a score of 0.81 (Moderate System Confidence). Note: This score reflects system-level confidence based on available source reliability (0.95), freshness (1.00), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_87f501cc",
+      "decision": "ADD",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:27:11.851106+00:00"
+  },
+  {
+    "claim_id": "claim_7cab1c22",
+    "decision": "ADD",
+    "reasoning": "New knowledge fact detected. Added to graph and vector store.",
+    "trust_breakdown": {
+      "source_reliability": 0.9,
+      "freshness": 1.0,
+      "evidence_support": 0.5,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.805,
+      "score_percentage": "80.5%",
+      "interpretation": "This claim has a score of 0.81 (Moderate System Confidence). Note: This score reflects system-level confidence based on available source reliability (0.90), freshness (1.00), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_7cab1c22",
+      "decision": "ADD",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:27:37.306275+00:00"
+  },
+  {
+    "claim_id": "claim_7cab1c22",
+    "decision": "UPDATE",
+    "reasoning": "Fact already exists. Updated metadata and verified claim 'claim_7cab1c22'.",
+    "trust_breakdown": {
+      "source_reliability": 0.9,
+      "freshness": 1.0,
+      "evidence_support": 0.5,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.805,
+      "score_percentage": "80.5%",
+      "interpretation": "This claim has a score of 0.81 (Moderate System Confidence). Note: This score reflects system-level confidence based on available source reliability (0.90), freshness (1.00), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_7cab1c22",
+      "decision": "UPDATE",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:27:41.428019+00:00"
+  },
+  {
+    "claim_id": "claim_ceo_001",
+    "decision": "ADD",
+    "reasoning": "New knowledge fact detected. Added to graph and vector store.",
+    "trust_breakdown": {
+      "source_reliability": 0.8,
+      "freshness": 0.9512,
+      "evidence_support": 0.5,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.7702,
+      "score_percentage": "77.0%",
+      "interpretation": "This claim has a score of 0.77 (Moderate System Confidence). Note: This score reflects system-level confidence based on available source reliability (0.80), freshness (0.95), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_ceo_001",
+      "decision": "ADD",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:28:06.941923+00:00"
+  },
+  {
+    "claim_id": "claim_ceo_002",
+    "decision": "REPLACE",
+    "reasoning": "Conflict detected with existing claim. Incoming claim 'claim_ceo_002' won resolution via LATEST_WINS policy. Replaced previous claim 'claim_ceo_001'.",
+    "trust_breakdown": {
+      "source_reliability": 0.8,
+      "freshness": 1.0,
+      "evidence_support": 0.5,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.78,
+      "score_percentage": "78.0%",
+      "interpretation": "This claim has a score of 0.78 (Moderate System Confidence). Note: This score reflects system-level confidence based on available source reliability (0.80), freshness (1.00), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": true,
+    "conflict_record": {
+      "conflict_id": "conflict_a3aeaf0e",
+      "entity_subject": "Acme Corp",
+      "predicate": "has_CEO",
+      "claim_a": {
+        "id": "claim_ceo_001",
+        "subject": "Acme Corp",
+        "predicate": "has_CEO",
+        "object": "John Doe",
+        "source": "annual_report_recent.pdf",
+        "source_type": "general",
+        "timestamp": "2026-09-24T14:28:02.791558+00:00",
+        "confidence": 0.8,
+        "context_chunk": "",
+        "validity_status": "ACTIVE",
+        "metadata": {}
+      },
+      "claim_b": {
+        "id": "claim_ceo_002",
+        "subject": "Acme Corp",
+        "predicate": "has_CEO",
+        "object": "Jane Smith",
+        "source": "press_release_2026.pdf",
+        "source_type": "general",
+        "timestamp": "2026-09-29T14:28:06.944079+00:00",
+        "confidence": 0.8,
+        "context_chunk": "",
+        "validity_status": "ACTIVE",
+        "metadata": {}
+      },
+      "detected_at": "2026-09-29T14:28:06.944371+00:00",
+      "resolution_status": "RESOLVED_claim_ceo_002",
+      "winning_claim_id": "claim_ceo_002",
+      "applied_policy": "LATEST_WINS",
+      "rationale": "Claim B is newer (timestamp: 2026-09-29T14:28:06.944079+00:00) than Claim A (2026-09-24T14:28:02.791558+00:00)."
+    },
+    "graph_updates": {
+      "claim_id": "claim_ceo_002",
+      "decision": "REPLACE",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:28:11.165279+00:00"
+  },
+  {
+    "claim_id": "claim_19de198a",
+    "decision": "ADD",
+    "reasoning": "New knowledge fact detected. Added to graph and vector store.",
+    "trust_breakdown": {
+      "source_reliability": 0.8,
+      "freshness": 1.0,
+      "evidence_support": 0.5,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.78,
+      "score_percentage": "78.0%",
+      "interpretation": "This claim has a score of 0.78 (Moderate System Confidence). Note: This score reflects system-level confidence based on available source reliability (0.80), freshness (1.00), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_19de198a",
+      "decision": "ADD",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:28:19.511313+00:00"
+  },
+  {
+    "claim_id": "claim_fa020f9f",
+    "decision": "ARCHIVE",
+    "reasoning": "Information is historically outdated and marked for archiving.",
+    "trust_breakdown": {
+      "source_reliability": 0.8,
+      "freshness": 0.0183,
+      "evidence_support": 0.5,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.5837,
+      "score_percentage": "58.4%",
+      "interpretation": "This claim has a score of 0.58 (Low/Cautious Confidence). Note: This score reflects system-level confidence based on available source reliability (0.80), freshness (0.02), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_fa020f9f",
+      "decision": "ARCHIVE",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:28:35.757764+00:00"
+  },
+  {
+    "claim_id": "claim_de5ebca9",
+    "decision": "ADD",
+    "reasoning": "New knowledge fact detected. Added to graph and vector store.",
+    "trust_breakdown": {
+      "source_reliability": 0.95,
+      "freshness": 1.0,
+      "evidence_support": 0.4792,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.8133,
+      "score_percentage": "81.3%",
+      "interpretation": "This claim has a score of 0.81 (Moderate System Confidence). Note: This score reflects system-level confidence based on available source reliability (0.95), freshness (1.00), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_de5ebca9",
+      "decision": "ADD",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:28:45.922879+00:00"
+  },
+  {
+    "claim_id": "claim_75838cfd",
+    "decision": "ADD",
+    "reasoning": "New knowledge fact detected. Added to graph and vector store.",
+    "trust_breakdown": {
+      "source_reliability": 0.9,
+      "freshness": 1.0,
+      "evidence_support": 0.4528,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.7956,
+      "score_percentage": "79.6%",
+      "interpretation": "This claim has a score of 0.80 (Moderate System Confidence). Note: This score reflects system-level confidence based on available source reliability (0.90), freshness (1.00), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_75838cfd",
+      "decision": "ADD",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:29:01.963097+00:00"
+  },
+  {
+    "claim_id": "claim_86918cc4",
+    "decision": "ADD",
+    "reasoning": "New knowledge fact detected. Added to graph and vector store.",
+    "trust_breakdown": {
+      "source_reliability": 0.9,
+      "freshness": 1.0,
+      "evidence_support": 0.5,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.805,
+      "score_percentage": "80.5%",
+      "interpretation": "This claim has a score of 0.81 (Moderate System Confidence). Note: This score reflects system-level confidence based on available source reliability (0.90), freshness (1.00), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_86918cc4",
+      "decision": "ADD",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:29:12.384615+00:00"
+  },
+  {
+    "claim_id": "claim_86918cc4",
+    "decision": "UPDATE",
+    "reasoning": "Fact already exists. Updated metadata and verified claim 'claim_86918cc4'.",
+    "trust_breakdown": {
+      "source_reliability": 0.9,
+      "freshness": 1.0,
+      "evidence_support": 0.5,
+      "graph_agreement": 0.8,
+      "retrieval_relevance": 0.8,
+      "overall_trust_score": 0.805,
+      "score_percentage": "80.5%",
+      "interpretation": "This claim has a score of 0.81 (Moderate System Confidence). Note: This score reflects system-level confidence based on available source reliability (0.90), freshness (1.00), and graph agreement (0.80), not guaranteed real-world truth."
+    },
+    "conflict_detected": false,
+    "conflict_record": null,
+    "graph_updates": {
+      "claim_id": "claim_86918cc4",
+      "decision": "UPDATE",
+      "neo4j_status": "error",
+      "chroma_status": "success",
+      "incremental": true
+    },
+    "vector_updates": {},
+    "timestamp": "2026-09-29T14:29:16.684820+00:00"
+  }
+]
