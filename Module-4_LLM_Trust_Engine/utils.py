@@ -6,16 +6,26 @@ Purpose: Loggers and utility formatting functions for Module 4.
 
 import logging
 import os
+import sys
 from pathlib import Path
 try:
-    from config import Module4Config
-except (ImportError, AttributeError):
-    import importlib.util
-    _cfg_path = Path(__file__).resolve().parent / "config.py"
-    _spec = importlib.util.spec_from_file_location("module4_config", _cfg_path)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    Module4Config = _mod.Module4Config
+    from .config import Module4Config
+except (ImportError, ValueError):
+    try:
+        import importlib
+        _mod = importlib.import_module("Module-4_LLM_Trust_Engine.config")
+        Module4Config = _mod.Module4Config
+    except (ImportError, AttributeError):
+        import importlib.util
+        if "Module-4_LLM_Trust_Engine.config" in sys.modules:
+            Module4Config = sys.modules["Module-4_LLM_Trust_Engine.config"].Module4Config
+        else:
+            _cfg_path = Path(__file__).resolve().parent / "config.py"
+            _spec = importlib.util.spec_from_file_location("Module-4_LLM_Trust_Engine.config", _cfg_path)
+            _mod = importlib.util.module_from_spec(_spec)
+            sys.modules["Module-4_LLM_Trust_Engine.config"] = _mod
+            _spec.loader.exec_module(_mod)
+            Module4Config = _mod.Module4Config
 
 
 def setup_logger(name: str, log_file: Path) -> logging.Logger:

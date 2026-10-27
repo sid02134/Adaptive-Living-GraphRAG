@@ -7,17 +7,27 @@ Purpose: Logging initialization and utility helper functions.
 import logging
 import os
 import re
+import sys
 from pathlib import Path
 from typing import List, Any
 try:
-    from config import Module2Config
-except (ImportError, AttributeError):
-    import importlib.util
-    _cfg_path = Path(__file__).resolve().parent / "config.py"
-    _spec = importlib.util.spec_from_file_location("module2_config", _cfg_path)
-    _mod = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(_mod)
-    Module2Config = _mod.Module2Config
+    from .config import Module2Config
+except (ImportError, ValueError):
+    try:
+        import importlib
+        _mod = importlib.import_module("Module-2_Knowledge_Representation.config")
+        Module2Config = _mod.Module2Config
+    except (ImportError, AttributeError):
+        import importlib.util
+        if "Module-2_Knowledge_Representation.config" in sys.modules:
+            Module2Config = sys.modules["Module-2_Knowledge_Representation.config"].Module2Config
+        else:
+            _cfg_path = Path(__file__).resolve().parent / "config.py"
+            _spec = importlib.util.spec_from_file_location("Module-2_Knowledge_Representation.config", _cfg_path)
+            _mod = importlib.util.module_from_spec(_spec)
+            sys.modules["Module-2_Knowledge_Representation.config"] = _mod
+            _spec.loader.exec_module(_mod)
+            Module2Config = _mod.Module2Config
 
 
 def setup_logger(name: str = "graph_logger") -> logging.Logger:

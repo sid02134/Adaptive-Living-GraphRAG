@@ -5,22 +5,30 @@ Purpose: Connect to Ollama API for Llama 3 generation with fallback response log
 """
 
 import json
+import sys
 from pathlib import Path
-from typing import Optional, List, Dict, Any
+from typing import Optional
+
 try:
     from .config import Module4Config
     from .exceptions import LLMConnectionError
     from .utils import llm_logger
 except (ImportError, ValueError):
     try:
-        from config import Module4Config
+        import importlib
+        _mod = importlib.import_module("Module-4_LLM_Trust_Engine.config")
+        Module4Config = _mod.Module4Config
     except (ImportError, AttributeError):
         import importlib.util
-        _cfg_path = Path(__file__).resolve().parent / "config.py"
-        _spec = importlib.util.spec_from_file_location("module4_config", _cfg_path)
-        _mod = importlib.util.module_from_spec(_spec)
-        _spec.loader.exec_module(_mod)
-        Module4Config = _mod.Module4Config
+        if "Module-4_LLM_Trust_Engine.config" in sys.modules:
+            Module4Config = sys.modules["Module-4_LLM_Trust_Engine.config"].Module4Config
+        else:
+            _cfg_path = Path(__file__).resolve().parent / "config.py"
+            _spec = importlib.util.spec_from_file_location("Module-4_LLM_Trust_Engine.config", _cfg_path)
+            _mod = importlib.util.module_from_spec(_spec)
+            sys.modules["Module-4_LLM_Trust_Engine.config"] = _mod
+            _spec.loader.exec_module(_mod)
+            Module4Config = _mod.Module4Config
     try:
         from exceptions import LLMConnectionError
     except (ImportError, AttributeError):
@@ -40,8 +48,6 @@ except (ImportError, ValueError):
         _spec.loader.exec_module(_mod)
         llm_logger = getattr(_mod, "llm_logger")
 
-    llm_logger = getattr(_mod, "llm_logger")
-
 
 class OllamaClient:
     """Manages HTTP REST calls to local Ollama Llama 3 service.
@@ -56,7 +62,8 @@ class OllamaClient:
         self,
         base_url: str = Module4Config.OLLAMA_BASE_URL,
         model_name: str = Module4Config.LLM_MODEL_NAME,
-        temperature: float = Module4Config.TEMPERATURE
+        temperature: float = Module4Config.TEMPERATURE,
+        request_timeout: Optional[int] = None
     ) -> None:
         """Initialize OllamaClient.
 
@@ -64,10 +71,12 @@ class OllamaClient:
             base_url (str): Base URL of local Ollama server.
             model_name (str): Llama 3 model name.
             temperature (float): Sampling temperature.
+            request_timeout (Optional[int]): Request timeout in seconds.
         """
         self.base_url = base_url.rstrip("/")
         self.model_name = model_name
         self.temperature = temperature
+        self.request_timeout = request_timeout or getattr(Module4Config, "REQUEST_TIMEOUT", 30)
         self._check_connection()
 
     def _check_connection(self) -> None:
@@ -117,7 +126,7 @@ class OllamaClient:
             req = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json"}, method="POST")
 
             llm_logger.info(f"Sending prompt request to Ollama ({self.model_name})...")
-            with urllib.request.urlopen(req, timeout=3) as response:
+            with urllib.request.urlopen(req, timeout=self.request_timeout) as response:
                 if response.status == 200:
                     res_body = json.loads(response.read().decode("utf-8"))
                     answer = res_body.get("response", "").strip()

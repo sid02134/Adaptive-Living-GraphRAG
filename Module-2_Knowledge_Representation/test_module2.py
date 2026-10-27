@@ -32,7 +32,16 @@ try:
     mod2_gb = importlib.import_module("Module-2_Knowledge_Representation.graph_builder")
     GraphBuilder = getattr(mod2_gb, "GraphBuilder")
 except Exception:
-    from config import Module2Config
+    import importlib.util
+    if "Module-2_Knowledge_Representation.config" in sys.modules:
+        Module2Config = sys.modules["Module-2_Knowledge_Representation.config"].Module2Config
+    else:
+        _cfg_path = Path(__file__).resolve().parent / "config.py"
+        _spec = importlib.util.spec_from_file_location("Module-2_Knowledge_Representation.config", _cfg_path)
+        _mod = importlib.util.module_from_spec(_spec)
+        sys.modules["Module-2_Knowledge_Representation.config"] = _mod
+        _spec.loader.exec_module(_mod)
+        Module2Config = _mod.Module2Config
     from embedding_generator import EmbeddingGenerator
     from chroma_manager import ChromaManager
     from entity_extractor import EntityExtractor

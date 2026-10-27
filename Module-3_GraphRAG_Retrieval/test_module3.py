@@ -28,7 +28,16 @@ try:
     mod3_ret = importlib.import_module("Module-3_GraphRAG_Retrieval.retriever")
     GraphRAGRetriever = getattr(mod3_ret, "GraphRAGRetriever")
 except Exception:
-    from config import Module3Config
+    import importlib.util
+    if "Module-3_GraphRAG_Retrieval.config" in sys.modules:
+        Module3Config = sys.modules["Module-3_GraphRAG_Retrieval.config"].Module3Config
+    else:
+        _cfg_path = Path(__file__).resolve().parent / "config.py"
+        _spec = importlib.util.spec_from_file_location("Module-3_GraphRAG_Retrieval.config", _cfg_path)
+        _mod = importlib.util.module_from_spec(_spec)
+        sys.modules["Module-3_GraphRAG_Retrieval.config"] = _mod
+        _spec.loader.exec_module(_mod)
+        Module3Config = _mod.Module3Config
     from vector_retriever import VectorRetriever
     from graph_retriever import GraphRetriever
     from hybrid_retriever import HybridRetriever

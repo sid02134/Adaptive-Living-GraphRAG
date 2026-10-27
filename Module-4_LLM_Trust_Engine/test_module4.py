@@ -31,7 +31,16 @@ try:
     mod4_ag = importlib.import_module("Module-4_LLM_Trust_Engine.answer_generator")
     AnswerGenerator = getattr(mod4_ag, "AnswerGenerator")
 except Exception:
-    from config import Module4Config
+    import importlib.util
+    if "Module-4_LLM_Trust_Engine.config" in sys.modules:
+        Module4Config = sys.modules["Module-4_LLM_Trust_Engine.config"].Module4Config
+    else:
+        _cfg_path = Path(__file__).resolve().parent / "config.py"
+        _spec = importlib.util.spec_from_file_location("Module-4_LLM_Trust_Engine.config", _cfg_path)
+        _mod = importlib.util.module_from_spec(_spec)
+        sys.modules["Module-4_LLM_Trust_Engine.config"] = _mod
+        _spec.loader.exec_module(_mod)
+        Module4Config = _mod.Module4Config
     from ollama_client import OllamaClient
     from trust_score import TrustEvaluator
     from source_ranker import SourceRanker

@@ -22,14 +22,20 @@ try:
     from .exceptions import global_exception_handler
 except (ImportError, ValueError):
     try:
-        from config import Module5Config
+        import importlib
+        _mod = importlib.import_module("Module-5_Backend_API.config")
+        Module5Config = _mod.Module5Config
     except (ImportError, AttributeError):
         import importlib.util
-        _cfg_path = Path(__file__).resolve().parent / "config.py"
-        _spec = importlib.util.spec_from_file_location("module5_config", _cfg_path)
-        _mod = importlib.util.module_from_spec(_spec)
-        _spec.loader.exec_module(_mod)
-        Module5Config = _mod.Module5Config
+        if "Module-5_Backend_API.config" in sys.modules:
+            Module5Config = sys.modules["Module-5_Backend_API.config"].Module5Config
+        else:
+            _cfg_path = Path(__file__).resolve().parent / "config.py"
+            _spec = importlib.util.spec_from_file_location("Module-5_Backend_API.config", _cfg_path)
+            _mod = importlib.util.module_from_spec(_spec)
+            sys.modules["Module-5_Backend_API.config"] = _mod
+            _spec.loader.exec_module(_mod)
+            Module5Config = _mod.Module5Config
     from routes import api_v1_router
     try:
         from exceptions import global_exception_handler

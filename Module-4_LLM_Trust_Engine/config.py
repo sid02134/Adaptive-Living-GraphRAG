@@ -35,6 +35,7 @@ class Module4Config:
     OLLAMA_BASE_URL: str = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
     LLM_MODEL_NAME: str = os.getenv("LLM_MODEL_NAME", "llama3")
     TEMPERATURE: float = float(os.getenv("TEMPERATURE", "0.2"))
+    REQUEST_TIMEOUT: int = int(os.getenv("OLLAMA_TIMEOUT", "30"))
 
     # Trust Score Formula Weights
     WEIGHT_SEMANTIC_SIMILARITY: float = 0.40
@@ -53,6 +54,7 @@ class Module4Config:
             "OLLAMA_BASE_URL": cls.OLLAMA_BASE_URL,
             "LLM_MODEL_NAME": cls.LLM_MODEL_NAME,
             "TEMPERATURE": cls.TEMPERATURE,
+            "REQUEST_TIMEOUT": cls.REQUEST_TIMEOUT,
             "WEIGHT_SEMANTIC_SIMILARITY": cls.WEIGHT_SEMANTIC_SIMILARITY,
             "WEIGHT_SOURCE_RELIABILITY": cls.WEIGHT_SOURCE_RELIABILITY,
             "WEIGHT_GRAPH_CONSISTENCY": cls.WEIGHT_GRAPH_CONSISTENCY,
